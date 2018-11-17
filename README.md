@@ -49,4 +49,13 @@ source devel/setup.bash
 Запуск:
 ```bash
 roscore
+rosrun xv_11_laser_driver neato_laser_publisher _port:=/dev/ttyUSB0
+rosrun xv_11_laser_driver neato_laser_publisher _port:=/dev/ttyUSB0 _firmware_version:=2
 ```
+Rviz:
+```bash
+rosrun rviz rviz
+```
+Edit "Fixed Frame" value (top-left in rviz window).  Click where it says, "map" and enter "/neato_laser".
+Click on the "Add" button (bottom-left in rviz window) and select "LaserScan" from the list.
+Expand LaserScan (in left pane of rviz window) and click to the right of "Topic" and select "/scan" from the drop-down list.
