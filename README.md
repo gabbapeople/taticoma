@@ -1,5 +1,5 @@
 # taticoma
-the taticoma robot source code
+The taticoma robot source code.
 
 ## Памятка
 
