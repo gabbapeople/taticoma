@@ -1,7 +1,8 @@
 # taticoma
 The taticoma robot source code.
 
-## Памятка
+# Памятка
+## Workspace
 
 Переменные окружения ROS
 
@@ -18,4 +19,23 @@ catkin_make
 
 source devel/setup.bash
 echo $ROS_PACKAGE_PATH
+```
+
+
+## XV11 Lidar
+
+Драйвер
+
+```bash
+sudo apt-get install ros-<distro>-xv-11-laser-driver
+```
+
+Драйвер вручную
+
+```bash
+cd catkin_ws/src
+git clone https://github.com/rohbotics/xv_11_laser_driver.git
+cd ..
+catkin_make
+source devel/setup.bash
 ```
