@@ -2,6 +2,11 @@
 The taticoma robot source code.
 
 # Памятка
+## Команды
+График нод:
+```bash
+rqt_graph
+```
 ## Workspace
 
 Переменные окружения ROS:
