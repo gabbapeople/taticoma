@@ -29,7 +29,7 @@ Connection:
 UART 3.3V
 - VIN 3.3v red
 - GND black
-- RX brouwn
+- RX brown
 - TX orange (transmit from laser)
 
 
