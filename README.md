@@ -89,7 +89,7 @@ wpa_passphrase Amperka mega2560 >> wpa_supplicant.conf
 ```bash
 sudo systemctl status sshd
 ```
-Коннект по SSH
+Коннект по SSH:
 ```bash
 ssh юзер@адрес
 ssh ubuntu@192.168.88.250
