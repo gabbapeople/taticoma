@@ -66,7 +66,7 @@ Click on the "Add" button (bottom-left in rviz window) and select "LaserScan" fr
 Expand LaserScan (in left pane of rviz window) and click to the right of "Topic" and select "/scan" from the drop-down list.
 
 
-## Raspberry wifi
+## Raspberry wifi+ssh
 Список сетей:
 ```bash
 sudo iwlist wlan0 scan | grep ESSID
@@ -84,4 +84,13 @@ psk=8263d9d055495146b11a37ee65018796025638ba76525666b38f8f0216eed224
 sudo bash
 cd /etc/wpa_supplicant
 wpa_passphrase Amperka mega2560 >> wpa_supplicant.conf
+```
+Работает ли SSH?:
+```bash
+sudo systemctl status sshd
+```
+Коннект по SSH
+```bash
+ssh юзер@адрес
+ssh ubuntu@192.168.88.250
 ```
