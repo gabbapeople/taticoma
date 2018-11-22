@@ -75,7 +75,6 @@ sudo iwlist wlan0 scan | grep ESSID
 ```bash
 wpa_passphrase SSIDname MySuperPassword
 
-Пример:
 network={
 ssid="SSIDname"
 #psk="MySuperPassword"
@@ -86,6 +85,3 @@ sudo bash
 cd /etc/wpa_supplicant
 wpa_passphrase Amperka mega2560 >> wpa_supplicant.conf
 ```
-wpa_passphrase "PIMAN" "MySuperPassword" >> /etc/wpa_supplicant/wpa_supplicant.conf
-
-
