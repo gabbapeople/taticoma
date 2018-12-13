@@ -59,3 +59,16 @@ sudo systemctl status sshd
 ssh user@adress
 ssh ubuntu@192.168.88.250
 ```
+
+
+
+auto.sh bash script autorun add and remove
+```bash
+nano simple_bash.sh
+chmod a+x simple_bash.sh
+chmod 777 simple_bash.sh
+sudo cp /path_to_script/script.sh /etc/init.d/
+sudo update-rc.d script.sh defaults
+sudo rm /etc/init.d/script.sh
+sudo update-rc.d script.sh remove
+```
