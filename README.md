@@ -91,6 +91,6 @@ sudo systemctl status sshd
 ```
 Коннект по SSH:
 ```bash
-ssh юзер@адрес
+ssh user@adress
 ssh ubuntu@192.168.88.250
 ```
