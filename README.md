@@ -69,3 +69,17 @@ xterm -hold -e x11vnc -usepw -forever -geometry 800x480 -scale 1.2x1.2
 xterm -e roscore
 $SHELL
 ```
+## Control ROS distantly
+
+nano ~/.bashrc переменные окружения
+`roscore` только на мастере
+
+```bash
+
+export ROS_MASTER_URI=http://192.168.88.250:11311
+export ROS_IP=192.168.88.250
+
+export ROS_MASTER_URI=http://192.168.88.250:11311
+export ROS_IP=192.168.88.X
+
+```
