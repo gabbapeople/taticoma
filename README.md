@@ -71,7 +71,7 @@ $SHELL
 ```
 ## Control ROS distantly
 
-nano ~/.bashrc переменные окружения
+nano ~/.bashrc переменные окружения. 
 `roscore` только на мастере
 
 ```bash
