@@ -60,10 +60,12 @@ ssh user@adress
 ssh ubuntu@192.168.88.250
 ```
 
-## Raspberry autostart
+## Raspberry autostart + vnc
 
 
 auto.sh bash script autorun add and remove
 ```bash
-
+#! /bin/bash
+xterm -hold -e x11vnc -usepw -forever -geometry 800x480
+$SHELL
 ```
