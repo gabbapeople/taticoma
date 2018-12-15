@@ -6,6 +6,9 @@ The taticoma robot source code.
 График нод:
 ```bash
 rqt_graph
+
+rostopic pub syscommand std_msgs/String "reset"
+
 ```
 ## Workspace
 
