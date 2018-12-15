@@ -74,12 +74,17 @@ $SHELL
 nano ~/.bashrc переменные окружения. 
 `roscore` только на мастере
 
+work
 ```bash
-
 export ROS_MASTER_URI=http://192.168.88.250:11311
 export ROS_IP=192.168.88.250
-
 export ROS_MASTER_URI=http://192.168.88.250:11311
 export ROS_IP=192.168.88.X
-
+```
+home
+```bash
+export ROS_MASTER_URI=http://192.168.1.8:11311
+export ROS_IP=192.168.1.8
+export ROS_MASTER_URI=http://192.168.1.8:11311
+export ROS_IP=192.168.1.2
 ```
