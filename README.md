@@ -21,15 +21,18 @@ mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/
 catkin_make
 ```
+New package
+```bash
+cd ~/catkin_ws
+catkin_create_pkg my_new_package
+cd src/my_new_package
+```
 
 Проверка:
 ```bash
 source devel/setup.bash
 echo $ROS_PACKAGE_PATH
 ```
-
-## RPLidar
-
 
 ## Raspberry wifi+ssh
 Список сетей:
