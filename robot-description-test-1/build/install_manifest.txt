@@ -1,0 +1,6 @@
+/home/ubuntu/ROS/taticoma/robot-description-test-1/install/_setup_util.py
+/home/ubuntu/ROS/taticoma/robot-description-test-1/install/env.sh
+/home/ubuntu/ROS/taticoma/robot-description-test-1/install/setup.bash
+/home/ubuntu/ROS/taticoma/robot-description-test-1/install/setup.sh
+/home/ubuntu/ROS/taticoma/robot-description-test-1/install/setup.zsh
+/home/ubuntu/ROS/taticoma/robot-description-test-1/install/.rosinstall

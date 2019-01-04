@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/ubuntu/ROS/taticoma/robot-description-test-1/install/setup.sh
