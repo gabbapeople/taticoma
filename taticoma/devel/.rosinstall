@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/ubuntu/ROS/taticoma/taticoma/devel/setup.sh

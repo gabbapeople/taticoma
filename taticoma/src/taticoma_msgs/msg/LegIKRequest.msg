@@ -1,0 +1,3 @@
+int32 leg_number
+taticoma_msgs/LegJointsState current_joints
+taticoma_msgs/LegPositionState target_position

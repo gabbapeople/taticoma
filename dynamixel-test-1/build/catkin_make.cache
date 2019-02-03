@@ -1,2 +1,0 @@
-my_dynamixel_tutorial
--DCATKIN_DEVEL_PREFIX=/home/ubuntu/ROS/taticoma/dynamixel-test-1/devel -DCMAKE_INSTALL_PREFIX=/home/ubuntu/ROS/taticoma/dynamixel-test-1/install -G Unix Makefiles

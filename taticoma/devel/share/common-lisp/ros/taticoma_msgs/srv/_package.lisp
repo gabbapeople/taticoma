@@ -1,0 +1,10 @@
+(cl:defpackage taticoma_msgs-srv
+  (:use )
+  (:export
+   "GETLEGIKSOLVER"
+   "<GETLEGIKSOLVER-REQUEST>"
+   "GETLEGIKSOLVER-REQUEST"
+   "<GETLEGIKSOLVER-RESPONSE>"
+   "GETLEGIKSOLVER-RESPONSE"
+  ))
+

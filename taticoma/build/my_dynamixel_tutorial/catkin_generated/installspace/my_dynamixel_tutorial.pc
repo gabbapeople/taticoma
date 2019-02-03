@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/ROS/taticoma/taticoma/install
+
+Name: my_dynamixel_tutorial
+Description: Description of my_dynamixel_tutorial
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ubuntu/ROS/taticoma/taticoma/install/lib 
+Requires: 

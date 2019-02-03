@@ -1,0 +1,54 @@
+<launch>
+<!-- Start taticoma_leg_servos joint controller -->
+    <rosparam file="$(find taticoma_dynamixel)/settings/taticoma_servos.yaml" command="load"/>
+    <node name="controller_spawner" pkg="dynamixel_controllers" type="controller_spawner.py"
+          args="--manager=dxl_manager
+                --port dxl_USB0
+                coha_r1_controller
+                coha_r2_controller
+                coha_r3_controller
+                coha_l1_controller
+                coha_l2_controller
+                coha_l3_controller
+                femur_r1_controller
+                femur_r2_controller
+                femur_r3_controller
+                femur_l1_controller
+                femur_l2_controller
+                femur_l3_controller
+                tibia_r1_controller
+                tibia_r2_controller
+                tibia_r3_controller
+                tibia_l1_controller
+                tibia_l2_controller
+                tibia_l3_controller
+                "
+          output="screen"/>
+          
+  <!-- Start joints trajectory controller controller -->
+    <rosparam file="$(find taticoma_dynamixel)/settings/joints_trajectory_controller.yaml" command="load"/>
+    <node name="controller_spawner_meta" pkg="dynamixel_controllers" type="controller_spawner.py"
+          args="--manager=dxl_manager
+                --type=meta
+                taticoma_controller
+                coha_r1_controller
+                coha_r2_controller
+                coha_r3_controller
+                coha_l1_controller
+                coha_l2_controller
+                coha_l3_controller
+                femur_r1_controller
+                femur_r2_controller
+                femur_r3_controller
+                femur_l1_controller
+                femur_l2_controller
+                femur_l3_controller
+                tibia_r1_controller
+                tibia_r2_controller
+                tibia_r3_controller
+                tibia_l1_controller
+                tibia_l2_controller
+                tibia_l3_controller
+               "
+          output="screen"/>
+</launch>

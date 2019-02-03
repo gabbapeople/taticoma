@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/ROS/taticoma/taticoma/devel
+
+Name: taticoma_teleop_joy
+Description: Description of taticoma_teleop_joy
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ubuntu/ROS/taticoma/taticoma/devel/lib 
+Requires: 

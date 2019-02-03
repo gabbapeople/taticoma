@@ -1,8 +1,0 @@
-prefix=/home/ubuntu/ROS/taticoma/robot-description-test-1/install
-
-Name: taticoma_joint_publisher
-Description: Description of taticoma_joint_publisher
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/ubuntu/ROS/taticoma/robot-description-test-1/install/lib 
-Requires: 
