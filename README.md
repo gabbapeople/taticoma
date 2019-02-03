@@ -1,15 +1,42 @@
 # taticoma
 The taticoma robot source code.
 
-# Памятка
-## Команды
-График нод:
+# Notes
+## cmd
+node graph:
 ```bash
 rqt_graph
-
 rostopic pub syscommand std_msgs/String "reset"
-
 ```
+## Bluetooth dongle + Ps3joy
+
+notes:
+```bash
+sudo sixpair
+sudo sixad -s
+hciconfig
+sudo hciconfig hcio up
+rfkill unblock all
+```
+## Dynamixel
+
+controller (manager + meta):
+```bash
+roslaunch taticoma_dynamixel controller_and_meta.launch
+```
+controller (manager):
+```bash
+roslaunch taticoma_dynamixel controller_manager.launch
+```
+controller (meta):
+```bash
+roslaunch taticoma_dynamixel start_meta_controller.launch
+```
+push to topic example:
+```bash
+rostopic pub -1 /femur_l1_controller/command std_msgs/Float64 -- 0
+```
+
 ## Workspace
 
 Переменные окружения ROS:
@@ -24,7 +51,7 @@ mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/
 catkin_make
 ```
-New package
+New package:
 ```bash
 cd ~/catkin_ws
 catkin_create_pkg my_new_package
@@ -68,7 +95,7 @@ ssh ubuntu@192.168.88.250
 
 ## Raspberry autostart + vnc
 
-auto.sh bash script autorun add and remove
+auto.sh bash script autorun add and remove:
 ```bash
 #! /bin/bash
 xterm -hold -e x11vnc -usepw -forever -geometry 800x480 -scale 1.2x1.2
@@ -77,17 +104,16 @@ $SHELL
 ```
 ## Control ROS distantly
 
-nano ~/.bashrc переменные окружения. 
-`roscore` только на мастере
+nano ~/.bashrc переменные окружения, `roscore` только на мастере.
 
-work
+work:
 ```bash
 export ROS_MASTER_URI=http://192.168.88.250:11311
 export ROS_IP=192.168.88.250
 export ROS_MASTER_URI=http://192.168.88.250:11311
 export ROS_IP=192.168.88.X
 ```
-home
+home:
 ```bash
 export ROS_MASTER_URI=http://192.168.1.8:11311
 export ROS_IP=192.168.1.8
