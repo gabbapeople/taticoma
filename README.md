@@ -2,7 +2,7 @@
 The taticoma robot source code.
 
 # Notes
-## cmd
+## Commands
 node graph:
 ```bash
 rqt_graph
