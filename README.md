@@ -20,21 +20,16 @@ rfkill unblock all
 ```
 ## Dynamixel
 
-controller (manager + meta):
+controller:
 ```bash
-roslaunch taticoma_dynamixel controller_and_meta.launch
+roslaunch dynamixel_workbench_controllers dynamixel_controllers.launch 
 ```
-controller (manager):
+rqt service call example:
 ```bash
-roslaunch taticoma_dynamixel controller_manager.launch
-```
-controller (meta):
-```bash
-roslaunch taticoma_dynamixel start_meta_controller.launch
-```
-push to topic example:
-```bash
-rostopic pub -1 /femur_l1_controller/command std_msgs/Float64 -- 0
+string command " 
+uint8 id 42
+string addr_name 'Goal_Position'
+int32 value -- 186 - 840 (54 - 246 deg)
 ```
 
 ## Workspace
