@@ -2,10 +2,14 @@
 The taticoma robot source code.
 
 # Notes
-## Commands
-node graph:
+
+##Not to forget
+
 ```bash
+rqt
 rqt_graph
+rosservice list
+rostopic list
 rostopic pub syscommand std_msgs/String "reset"
 ```
 ## Bluetooth dongle + Ps3joy
