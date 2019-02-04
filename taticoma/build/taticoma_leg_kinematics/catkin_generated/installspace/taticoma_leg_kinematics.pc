@@ -1,8 +1,0 @@
-prefix=/home/ubuntu/ROS/taticoma/taticoma/install
-
-Name: taticoma_leg_kinematics
-Description: Description of taticoma_leg_kinematics
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/ubuntu/ROS/taticoma/taticoma/install/lib 
-Requires: 

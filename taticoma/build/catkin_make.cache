@@ -1,2 +1,0 @@
-taticoma_body_kinematics:taticoma_dynamixel:taticoma_gait:taticoma_joint_publisher:taticoma_leg_kinematics:taticoma_msgs:taticoma_teleop_joy
--DCATKIN_DEVEL_PREFIX=/home/ubuntu/ROS/taticoma/taticoma/devel -DCMAKE_INSTALL_PREFIX=/home/ubuntu/ROS/taticoma/taticoma/install -G Unix Makefiles
