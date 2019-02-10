@@ -19,37 +19,35 @@
 #define NUM_LEGS 6
 #define NUM_JOINTS 3
 
-class GaitKinematics {
-	public:
-		GaitKinematics();
-		bool init();
-		void gaitGenerator();
+class GaitKinematics
+{
+  public:
+	GaitKinematics();
+	bool init();
+	void gaitGenerator();
 
-	private:
-		ros::NodeHandle node;
-		std::string root_name, tip_name;
-		std::vector<KDL::Frame> frames;
-		double fi;
-		taticoma_msgs::LegsJointsState legs;
-		taticoma_msgs::GetLegIKSolver srv;
-		taticoma_msgs::GaitCommand gait_command;
-		const static unsigned int num_joints = NUM_JOINTS;
-		const static unsigned int num_legs = NUM_LEGS;
-		double trap_low_r, trap_high_r, trap_h, trap_z;
-		double d_ripple, d_tripod;
+  private:
+	ros::NodeHandle node;
+	std::string root_name, tip_name;
+	std::vector<KDL::Frame> frames;
+	double fi;
+	taticoma_msgs::LegsJointsState legs;
+	taticoma_msgs::GetLegIKSolver srv;
+	taticoma_msgs::GaitCommand gait_command;
+	const static unsigned int num_joints = NUM_JOINTS;
+	const static unsigned int num_legs = NUM_LEGS;
+	double trap_low_r, trap_high_r, trap_h, trap_z;
+	double d_ripple, d_tripod;
 
-		ros::ServiceClient client;
-		ros::Publisher joints_pub;
-		ros::Subscriber gait_control_sub;
+	ros::ServiceClient client;
+	ros::Publisher joints_pub;
+	ros::Subscriber gait_control_sub;
 
-		bool loadModel(const std::string xml);
-		bool callService (KDL::Vector* vector);
-		void teleopGaitCtrl (const taticoma_msgs::GaitCommandConstPtr &gait_cmd);
-
+	bool loadModel(const std::string xml);
+	bool callService(KDL::Vector *vector);
+	void teleopGaitCtrl(const taticoma_msgs::GaitCommandConstPtr &gait_cmd);
 };
 
-GaitKinematics::GaitKinematics(){}
-
-
+GaitKinematics::GaitKinematics() {}
 
 #endif /* GAIT_TRIPOD_HPP_ */

@@ -11,5 +11,4 @@
 
 
 
-
 #endif /* GAIT_TEST_HPP_ */

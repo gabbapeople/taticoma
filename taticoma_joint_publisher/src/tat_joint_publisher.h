@@ -12,12 +12,11 @@
 #define NUM_LEGS 6
 #define NUM_JOINTS 3
 
-class tat_joint_publisher {
-	public:
-		void chatterLegsState (const LegsStateConstPtr& state);
-		bool init();
-
-	
+class tat_joint_publisher
+{
+  public:
+	void chatterLegsState(const LegsStateConstPtr &state);
+	bool init();
 };
 
 #endif /* BODY_KINEMATICS_HPP_ */

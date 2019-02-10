@@ -67,7 +67,7 @@ class TeleopJoy
 	taticoma_msgs::GaitCommand gait_command;
 	//taticoma_msgs::MoveCommand move_command;
 
-	taticoma_msgs::ControlCommand control_command; 
+	taticoma_msgs::ControlCommand control_command;
 
 	ros::Subscriber joy_sub;
 	ros::Publisher move_body_pub;
@@ -75,7 +75,7 @@ class TeleopJoy
 	ros::Publisher gait_cmd_pub;
 
 	//ros::Publisher move_cmd_pub;
-	ros::Publisher control_cmd_pub; 
+	ros::Publisher control_cmd_pub;
 
 	bool tat_mode;
 
@@ -87,13 +87,13 @@ class TeleopJoy
 
 	bool offset;
 	bool sleep;
-	bool servo_power_flag; 
-	bool audio_power_flag; 
+	bool servo_power_flag;
+	bool audio_power_flag;
 
 	void joyCallback(const sensor_msgs::Joy::ConstPtr &joy);
 
-	const static int mode_select_p = PS3_BUTTON_CROSS_RIGHT; 
-	const static int mode_select_m = PS3_BUTTON_CROSS_LEFT;  
+	const static int mode_select_p = PS3_BUTTON_CROSS_RIGHT;
+	const static int mode_select_m = PS3_BUTTON_CROSS_LEFT;
 
 	const static int axis_body_roll = PS3_AXIS_STICK_LEFT_LEFTWARDS;
 	const static int axis_body_pitch = PS3_AXIS_STICK_LEFT_UPWARDS;
@@ -105,14 +105,14 @@ class TeleopJoy
 	const static int button_right_shift = PS3_BUTTON_REAR_RIGHT_1;
 	const static int button_right_shift_2 = PS3_BUTTON_REAR_LEFT_2;
 
-	const static int axis_fi_y = PS3_AXIS_STICK_LEFT_UPWARDS;   
-	const static int axis_fi_x = PS3_AXIS_STICK_LEFT_LEFTWARDS; 
+	const static int axis_fi_y = PS3_AXIS_STICK_LEFT_UPWARDS;
+	const static int axis_fi_x = PS3_AXIS_STICK_LEFT_LEFTWARDS;
 
 	const static int axis_alpha = PS3_AXIS_STICK_RIGHT_LEFTWARDS;
 	const static int axis_scale = PS3_AXIS_STICK_RIGHT_UPWARDS;
 
-	const static int button_servoPower = PS3_BUTTON_ACTION_CIRCLE;			 
-	const static int button_gaitSwitch_piPower = PS3_BUTTON_ACTION_TRIANGLE; 
+	const static int button_servoPower = PS3_BUTTON_ACTION_CIRCLE;
+	const static int button_gaitSwitch_piPower = PS3_BUTTON_ACTION_TRIANGLE;
 	const static int button_audioPower_IMU = PS3_BUTTON_ACTION_CROSS;
 	const static int button_seatStand_sleepWake = PS3_AXIS_BUTTON_ACTION_SQUARE;
 };

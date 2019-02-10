@@ -29,18 +29,17 @@
 namespace KDL
 {
 
-    class SVD_HH
-    {
-    public:
-        SVD_HH(const Jacobian& jac);
-        ~SVD_HH();
+class SVD_HH
+{
+  public:
+    SVD_HH(const Jacobian &jac);
+    ~SVD_HH();
 
-        int calculate(const Jacobian& jac,std::vector<JntArray>& U,
-                      JntArray& w,std::vector<JntArray>& v,int maxiter);
-    private:
-        JntArray tmp;
-    };
-}
+    int calculate(const Jacobian &jac, std::vector<JntArray> &U,
+                  JntArray &w, std::vector<JntArray> &v, int maxiter);
+
+  private:
+    JntArray tmp;
+};
+} // namespace KDL
 #endif
-
-
