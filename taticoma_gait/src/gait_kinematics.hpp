@@ -1,5 +1,4 @@
 
-
 #ifndef GAIT_TRIPOD_HPP_
 #define GAIT_TRIPOD_HPP_
 
