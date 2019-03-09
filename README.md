@@ -12,7 +12,7 @@ rostopic pub syscommand std_msgs/String "reset"
 ```
 ## Bluetooth dongle + Ps3joy
 
-notes:
+Notes:
 ```bash
 sudo sixpair
 sudo sixad -s
@@ -22,7 +22,7 @@ rfkill unblock all
 ```
 ## Dynamixel
 
-controllers:
+Controllers:
 ```bash
 dynamixel_setup/launch/controller_manager.launch
 dynamixel_setup/launch/controller_spawner.launch
