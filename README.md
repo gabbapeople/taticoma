@@ -1,9 +1,7 @@
 # taticoma
 The taticoma robot source code.
 
-# Notes
-
-## Not to forget
+# Not to forget
 
 ```bash
 rqt
