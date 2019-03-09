@@ -3,8 +3,8 @@ project(taticoma_gait)
 
 find_package(catkin REQUIRED COMPONENTS
   kdl_parser
-  taticoma_msgs
   roscpp
+  taticoma_msgs
 )
 
 find_package(orocos_kdl)

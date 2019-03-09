@@ -24,16 +24,10 @@ rfkill unblock all
 ```
 ## Dynamixel
 
-controller:
+controllers:
 ```bash
-roslaunch dynamixel_workbench_controllers dynamixel_controllers.launch 
-```
-rqt service call example:
-```bash
-string command " 
-uint8 id 42
-string addr_name 'Goal_Position'
-int32 value -- 186 - 840 (54 - 246 deg)
+dynamixel_setup/launch/controller_manager.launch
+dynamixel_setup/launch/controller_spawner.launch
 ```
 
 ## Workspace

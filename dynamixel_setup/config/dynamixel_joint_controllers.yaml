@@ -1,0 +1,173 @@
+defs:
+    _controller_main_params: &controller_main_params
+        joint_speed: 10
+    _controller_params: &controller_params
+        package: dynamixel_controllers
+        module: joint_position_controller
+        type: JointPositionController
+    _motor_params: &motor_params
+        init: 512
+        min: 186
+        max: 840
+
+coha_r1_controller:
+    controller:
+        <<: *controller_params
+    joint_name: coha_r1
+    <<: *controller_main_params    
+    motor:
+        id: 0
+        <<: *motor_params
+
+femur_r1_controller:
+    controller:
+        <<: *controller_params
+    joint_name: femur_r1
+    <<: *controller_main_params
+    motor:
+        id: 1
+        <<: *motor_params
+
+tibia_r1_controller:
+    controller:
+        <<: *controller_params
+    joint_name: tibia_r1
+    <<: *controller_main_params
+    motor:
+        id: 2
+        <<: *motor_params
+
+coha_r2_controller:
+    controller:
+        <<: *controller_params
+    joint_name: coha_r2
+    <<: *controller_main_params    
+    motor:
+        id: 3
+        <<: *motor_params
+
+femur_r2_controller:
+    controller:
+        <<: *controller_params
+    joint_name: femur_r2
+    <<: *controller_main_params
+    motor:
+        id: 4
+        <<: *motor_params
+
+tibia_r2_controller:
+    controller:
+        <<: *controller_params
+    joint_name: tibia_r2
+    <<: *controller_main_params
+    motor:
+        id: 5
+        <<: *motor_params
+
+coha_r3_controller:
+    controller:
+        <<: *controller_params
+    joint_name: coha_r3
+    <<: *controller_main_params    
+    motor:
+        id: 6
+        <<: *motor_params
+
+femur_r3_controller:
+    controller:
+        <<: *controller_params
+    joint_name: femur_r3
+    <<: *controller_main_params
+    motor:
+        id: 7
+        <<: *motor_params
+
+tibia_r3_controller:
+    controller:
+        <<: *controller_params
+    joint_name: tibia_r3
+    <<: *controller_main_params
+    motor:
+        id: 8
+        <<: *motor_params
+
+coha_l1_controller:
+    controller:
+        <<: *controller_params
+    joint_name: coha_l1
+    <<: *controller_main_params    
+    motor:
+        id: 9
+        <<: *motor_params
+
+femur_l1_controller:
+    controller:
+        <<: *controller_params
+    joint_name: femur_l1
+    <<: *controller_main_params
+    motor:
+        id: 10
+        <<: *motor_params
+
+tibia_l1_controller:
+    controller:
+        <<: *controller_params
+    joint_name: tibia_l1
+    <<: *controller_main_params
+    motor:
+        id: 11
+        <<: *motor_params
+
+coha_l2_controller:
+    controller:
+        <<: *controller_params
+    joint_name: coha_l2
+    <<: *controller_main_params    
+    motor:
+        id: 12
+        <<: *motor_params
+
+femur_l2_controller:
+    controller:
+        <<: *controller_params
+    joint_name: femur_l2
+    <<: *controller_main_params
+    motor:
+        id: 13
+        <<: *motor_params
+
+tibia_l2_controller:
+    controller:
+        <<: *controller_params
+    joint_name: tibia_l2
+    <<: *controller_main_params
+    motor:
+        id: 14
+        <<: *motor_params
+
+coha_l3_controller:
+    controller:
+        <<: *controller_params
+    joint_name: coha_l3
+    <<: *controller_main_params    
+    motor:
+        id: 15
+        <<: *motor_params
+
+femur_l3_controller:
+    controller:
+        <<: *controller_params
+    joint_name: femur_l3
+    <<: *controller_main_params
+    motor:
+        id: 16
+        <<: *motor_params
+
+tibia_l3_controller:
+    controller:
+        <<: *controller_params
+    joint_name: tibia_l3
+    <<: *controller_main_params
+    motor:
+        id: 17
+        <<: *motor_params

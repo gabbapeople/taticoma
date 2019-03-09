@@ -18,6 +18,9 @@
 
   <rosparam param="source_list"> [taticoma_joint_publisher] </rosparam>
 
+  <include file="$(find dynamixel_setup)/launch/controller_spawner.launch" />
+  <include file="$(find taticoma_teleop_joy)/launch/joy.launch" />
+
   <node name="taticoma_leg_kinematics" pkg="taticoma_leg_kinematics" type="leg_ik_service" output="screen"/>
   <node name="taticoma_body_kinematics" pkg="taticoma_body_kinematics" type="body_kinematics" output="screen"/>
 
@@ -29,9 +32,8 @@
   
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find taticoma_description)/rviz_settings/display_model.rviz" />
 
-  <include file="$(find taticoma_teleop_joy)/launch/joy.launch" />
   
-  <include file="$(find dynamixel_workbench_controllers)/launch/dynamixel_controllers.launch" />
+
   <node name="taticoma_dynamixel" pkg="taticoma_dynamixel" type="dynamixel_controller_sub" output="screen"/>
 
 </launch>

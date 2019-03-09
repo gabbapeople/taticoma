@@ -28,7 +28,7 @@
 
 namespace KDL
 {
-/**
+    /**
      * Implementation of a inverse velocity kinematics algorithm based
      * on the generalize pseudo inverse to calculate the velocity
      * transformation from Cartesian to joint space of a general
@@ -37,10 +37,10 @@ namespace KDL
      *
      * @ingroup KinematicFamily
      */
-class ChainIkSolverVel_pinv : public ChainIkSolverVel
-{
-  public:
-    /**
+    class ChainIkSolverVel_pinv : public ChainIkSolverVel
+    {
+    public:
+        /**
          * Constructor of the solver
          *
          * @param chain the chain to calculate the inverse velocity
@@ -51,27 +51,28 @@ class ChainIkSolverVel_pinv : public ChainIkSolverVel
          * default: 150
          *
          */
-    explicit ChainIkSolverVel_pinv(const Chain &chain, double eps = 0.00001, int maxiter = 150);
-    ~ChainIkSolverVel_pinv();
+        explicit ChainIkSolverVel_pinv(const Chain& chain,double eps=0.00001,int maxiter=150);
+        ~ChainIkSolverVel_pinv();
 
-    virtual int CartToJnt(const JntArray &q_in, const Twist &v_in, JntArray &qdot_out);
-    /**
+        virtual int CartToJnt(const JntArray& q_in, const Twist& v_in, JntArray& qdot_out);
+        /**
          * not (yet) implemented.
          *
          */
-    virtual int CartToJnt(const JntArray &q_init, const FrameVel &v_in, JntArrayVel &q_out) { return -1; };
+        virtual int CartToJnt(const JntArray& q_init, const FrameVel& v_in, JntArrayVel& q_out){return -1;};
+    private:
+        const Chain chain;
+        ChainJntToJacSolver jnt2jac;
+        Jacobian jac;
+        SVD_HH svd;
+        std::vector<JntArray> U;
+        JntArray S;
+        std::vector<JntArray> V;
+        JntArray tmp;
+        double eps;
+        int maxiter;
 
-  private:
-    const Chain chain;
-    ChainJntToJacSolver jnt2jac;
-    Jacobian jac;
-    SVD_HH svd;
-    std::vector<JntArray> U;
-    JntArray S;
-    std::vector<JntArray> V;
-    JntArray tmp;
-    double eps;
-    int maxiter;
-};
-} // namespace KDL
+    };
+}
 #endif
+

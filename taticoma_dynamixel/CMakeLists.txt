@@ -6,6 +6,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   taticoma_msgs
+  dynamixel_workbench_msgs
 )
 
 catkin_package(

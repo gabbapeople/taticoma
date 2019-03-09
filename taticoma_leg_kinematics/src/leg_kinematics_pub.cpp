@@ -42,12 +42,12 @@ int main(int argc, char **argv)
 	//	ik_solver_vel -> setWeightTS(matrix_Mx);
 	KDL::JntArray joint_min(chain.getNrOfJoints());
 	KDL::JntArray joint_max(chain.getNrOfJoints());
-	joint_min(0) = -1.657;
-	joint_min(1) = -1.657;
-	joint_min(2) = -1.657;
-	joint_max(0) = 1.657;
-	joint_max(1) = 1.657;
-	joint_max(2) = 1.657;
+	joint_min(0) = -1.57;
+	joint_min(1) = -1.57;
+	joint_min(2) = -1.57;
+	joint_max(0) = 1.57;
+	joint_max(1) = 1.57;
+	joint_max(2) = 1.57;
 	ik_solver_pos = new KDL::HP_ChainIkSolverPos_NR_JL(chain, joint_min, joint_max,
 													   *fk_solver, *ik_solver_vel, 100, 0.0001);
 

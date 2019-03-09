@@ -1,4 +1,5 @@
 
+
 #ifndef GAIT_TRIPOD_HPP_
 #define GAIT_TRIPOD_HPP_
 
@@ -10,9 +11,9 @@
 #include <kdl/velocityprofile_spline.hpp>
 //#include <kdl/path_composite.hpp>
 #include <kdl/path_roundedcomposite.hpp>
-#include "taticoma_msgs/GetLegIKSolver.h"
-#include "taticoma_msgs/LegsJointsState.h"
-#include "taticoma_msgs/GaitCommand.h"
+#include <taticoma_msgs/GetLegIKSolver.h>
+#include <taticoma_msgs/LegsJointsState.h>
+#include <taticoma_msgs/GaitCommand.h>
 #include "gait.hpp"
 
 #define NUM_LEGS 6

@@ -1,0 +1,35 @@
+<!-- -*- mode: XML -*- -->
+
+<launch>
+
+    <include file="$(find dynamixel_setup)/launch/controller_manager.launch" />
+  
+    <!-- Load controller configuration to parameter server -->
+    <rosparam file="$(find dynamixel_setup)/config/dynamixel_joint_controllers.yaml" command="load"/>
+    
+    <!-- start specified joint controllers -->
+    <node name="dynamixel_controller_spawner" pkg="dynamixel_controllers" type="controller_spawner.py"
+          args="--manager=dxl_manager
+                --port=pan_tilt_port
+                --type=simple
+                coha_r1_controller
+                femur_r1_controller
+                tibia_r1_controller
+                coha_r2_controller
+                femur_r2_controller
+                tibia_r2_controller
+                coha_r3_controller
+                femur_r3_controller
+                tibia_r3_controller
+                coha_l1_controller
+                femur_l1_controller
+                tibia_l1_controller
+                coha_l2_controller
+                femur_l2_controller
+                tibia_l2_controller
+                coha_l3_controller
+                femur_l3_controller
+                tibia_l3_controller
+                "
+          output="screen"/>
+</launch>

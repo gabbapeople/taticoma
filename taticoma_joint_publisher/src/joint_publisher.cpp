@@ -17,6 +17,15 @@ void chatterLegsState(const LegsStateConstPtr &state)
 {
 	ros::Rate loop_rate(30);
 
+	for (int i = 0; i < 6; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			aaa.position.push_back(state->joints_state[i].joint[j]);
+			legs.joints_state[i].joint[j] = state->joints_state[i].joint[j];
+		}
+	}
+
 	aaa.header.stamp = ros::Time::now();
 	aaa.header.frame_id = 1;
 
