@@ -1,0 +1,35 @@
+<launch>
+
+  <arg name="model" />
+  <arg name="gui" default="False" />
+ 
+  <param name="robot_description" command="xacro --inorder '$(find taticoma_description)/models/taticoma_gen_2.xacro'" />
+  <param name="use_gui" value="$(arg gui)" />
+  <param name="rate" value="30" />
+  <param name="joint_upper_limit" type="double" value="1.657" />
+  <param name="joint_lower_limit" type="double" value="-1.657" />
+  <param name="trapezoid_low_radius" type="double" value="0.045" />
+  <param name="trapezoid_high_radius" type="double" value="0.0345" />
+  <param name="trapezoid_h" type="double" value="0.025" />
+  <param name="clearance" type="double" value="0.1" />
+
+  <param name="duration_ripple" type="double" value="1.2" />
+  <param name="duration_tripod" type="double" value="1.0" />
+
+  <rosparam param="source_list"> [taticoma_joint_publisher] </rosparam>
+
+  <include file="$(find dynamixel_setup)/launch/controller_spawner.launch" />
+  <include file="$(find taticoma_teleop_joy)/launch/joy.launch" />
+
+  <node name="taticoma_leg_kinematics" pkg="taticoma_leg_kinematics" type="leg_ik_service" output="screen"/>
+  <node name="taticoma_body_kinematics" pkg="taticoma_body_kinematics" type="body_kinematics" output="screen"/>
+
+  <node name="taticoma_gait" pkg="taticoma_gait" type="gait_kinematics" output="screen"/>
+  
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" output="screen"/>
+  <node name="taticoma_joint_publisher" pkg="taticoma_joint_publisher" type="joint_publisher" output="screen"/>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen"/>
+  
+  <node name="taticoma_dynamixel" pkg="taticoma_dynamixel" type="dynamixel_controller_sub" output="screen"/>
+
+</launch>
