@@ -3,12 +3,31 @@ The taticoma robot source code.
 
 # Not to forget
 
+## Launch
+
+Only Rviz + robot state publisher: 
+```bash
+roslaunch taticoma_description display_model.launch
+```
+
+Start all + Rviz: 
+```bash
+roslaunch taticoma_description bring_up_rviz.launch
+```
+
+Start all (Raspberry): 
+```bash
+roslaunch taticoma_description bring_up_pi.launch
+```
+
+## Some usefull ROS cmd
+
 ```bash
 rqt
 rqt_graph
 rosservice list
 rostopic list
-rostopic pub syscommand std_msgs/String "reset"
+rostopic pub
 ```
 ## Bluetooth dongle + Ps3joy
 
