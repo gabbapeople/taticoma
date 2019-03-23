@@ -12,10 +12,10 @@ add_message_files(
    LegsJointsState.msg
    LegIKRequest.msg
    LegPositionState.msg
+
    BodyState.msg
    BodyCommand.msg
    GaitCommand.msg
-   ControlCommand.msg
  )
 
 

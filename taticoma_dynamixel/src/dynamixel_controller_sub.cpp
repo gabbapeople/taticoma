@@ -37,7 +37,7 @@ Controller::Controller()
 	dynamixel_pos_pub.push_back(node.advertise<std_msgs::Float64>("/femur_l3_controller/command", 1));
 	dynamixel_pos_pub.push_back(node.advertise<std_msgs::Float64>("/tibia_l3_controller/command", 1));
 
-	ROS_INFO("Node Ready: Taticoma Dynamixel Controller");
+	ROS_WARN("Node Ready: dynamixel_controller_sub");
 }
 
 Controller::~Controller() {}

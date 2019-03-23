@@ -4,12 +4,12 @@
 
 #include <ros/ros.h>
 #include <sensor_msgs/Joy.h>
+
 #include "taticoma_msgs/BodyState.h"
 #include "taticoma_msgs/BodyCommand.h"
 #include "taticoma_msgs/GaitCommand.h"
 
-//#include "taticoma_msgs/MoveCommand.h"
-#include "taticoma_msgs/ControlCommand.h"
+#include <sensor_msgs/JoyFeedbackArray.h>
 
 // note on plain values:
 // buttons are either 0 or 1
@@ -61,39 +61,38 @@ class TeleopJoy
 	TeleopJoy();
 
   private:
+	
 	ros::NodeHandle node;
+
 	taticoma_msgs::BodyState body_state;
 	taticoma_msgs::BodyCommand body_command;
 	taticoma_msgs::GaitCommand gait_command;
-	//taticoma_msgs::MoveCommand move_command;
-
-	taticoma_msgs::ControlCommand control_command;
 
 	ros::Subscriber joy_sub;
+	
 	ros::Publisher move_body_pub;
 	ros::Publisher body_cmd_pub;
 	ros::Publisher gait_cmd_pub;
 
-	//ros::Publisher move_cmd_pub;
-	ros::Publisher control_cmd_pub;
-
-	bool tat_mode;
+	ros::Publisher feedback_pub;
 
 	double z;
 
-	bool stand_flag;
 	bool gait_flag;
-	bool imu_flag;
-
-	bool offset;
-	bool sleep;
-	bool servo_power_flag;
-	bool audio_power_flag;
+	
+	uint8_t mode_num;
+	const static uint8_t max_mode_num = 4;
 
 	void joyCallback(const sensor_msgs::Joy::ConstPtr &joy);
+	void modeMsg();
 
-	const static int mode_select_p = PS3_BUTTON_CROSS_RIGHT;
-	const static int mode_select_m = PS3_BUTTON_CROSS_LEFT;
+	sensor_msgs::JoyFeedbackPtr makeFeedbackLedMsg(sensor_msgs::JoyFeedback::_id_type id, sensor_msgs::JoyFeedback::_intensity_type intensity);
+	sensor_msgs::JoyFeedbackPtr makeFeedbackRumbleMsg(sensor_msgs::JoyFeedback::_id_type id, sensor_msgs::JoyFeedback::_intensity_type intensity);
+	void sendLedChannels(bool ch0, bool ch1, bool ch2, bool ch3);
+	void sendRumbleChannels(sensor_msgs::JoyFeedback::_intensity_type rumble_low_freq, sensor_msgs::JoyFeedback::_intensity_type rumble_high_freq);
+
+	const static int mode_select_forward = PS3_BUTTON_CROSS_RIGHT;
+	const static int mode_select_backward = PS3_BUTTON_CROSS_LEFT;
 
 	const static int axis_body_roll = PS3_AXIS_STICK_LEFT_LEFTWARDS;
 	const static int axis_body_pitch = PS3_AXIS_STICK_LEFT_UPWARDS;
@@ -101,6 +100,7 @@ class TeleopJoy
 	const static int axis_body_y_off = PS3_AXIS_STICK_LEFT_LEFTWARDS;
 	const static int axis_body_x_off = PS3_AXIS_STICK_LEFT_UPWARDS;
 	const static int axis_body_z_off = PS3_AXIS_STICK_RIGHT_UPWARDS;
+
 	const static int button_left_shift = PS3_BUTTON_REAR_LEFT_1;
 	const static int button_right_shift = PS3_BUTTON_REAR_RIGHT_1;
 	const static int button_right_shift_2 = PS3_BUTTON_REAR_LEFT_2;
@@ -111,10 +111,10 @@ class TeleopJoy
 	const static int axis_alpha = PS3_AXIS_STICK_RIGHT_LEFTWARDS;
 	const static int axis_scale = PS3_AXIS_STICK_RIGHT_UPWARDS;
 
-	const static int button_servoPower = PS3_BUTTON_ACTION_CIRCLE;
-	const static int button_gaitSwitch_piPower = PS3_BUTTON_ACTION_TRIANGLE;
-	const static int button_audioPower_IMU = PS3_BUTTON_ACTION_CROSS;
-	const static int button_seatStand_sleepWake = PS3_AXIS_BUTTON_ACTION_SQUARE;
+	const static int button_circle = PS3_BUTTON_ACTION_CIRCLE;
+	const static int button_triangle = PS3_BUTTON_ACTION_TRIANGLE;
+	const static int button_cross = PS3_BUTTON_ACTION_CROSS;
+	const static int button_square = PS3_BUTTON_ACTION_SQUARE;
 };
 
 #endif /* TELEOP_JOY_HPP_ */
