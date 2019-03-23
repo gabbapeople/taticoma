@@ -5,7 +5,7 @@ The taticoma robot source code.
 
 ## Joy launch
 
-PS3 joystick + feedback
+PS3 joystick + 6 channels feedback
 ```bash
 sudo bash 
 rosrun ps3joy ps3joy_node.py --inactivity-timeout=1000000
