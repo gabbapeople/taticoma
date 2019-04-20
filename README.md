@@ -1,8 +1,6 @@
 # taticoma
 The taticoma robot source code.
-
 ![ttcm](ttcm.png)
-
 # Not to forget
 
 ## PS3Joy launch
