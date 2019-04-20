@@ -18,7 +18,7 @@
 
   <rosparam param="source_list"> [taticoma_joint_publisher] </rosparam>
 
-  <include file="$(find dynamixel_setup)/launch/controller_spawner.launch" />
+  <!-- <include file="$(find dynamixel_setup)/launch/controller_spawner.launch" /> -->
   <include file="$(find taticoma_teleop_joy)/launch/joy.launch" />
 
   <node name="taticoma_leg_kinematics" pkg="taticoma_leg_kinematics" type="leg_ik_service" output="screen"/>

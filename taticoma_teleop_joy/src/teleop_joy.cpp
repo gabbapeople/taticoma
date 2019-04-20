@@ -10,71 +10,19 @@ TeleopJoy::TeleopJoy()
 	gait_cmd_pub = node.advertise<taticoma_msgs::GaitCommand>("/teleop/gait_control", 1);
 	move_body_pub = node.advertise<taticoma_msgs::BodyState>("/teleop/move_body", 1);
 
-	feedback_pub = node.advertise<sensor_msgs::JoyFeedbackArray>("/joy/set_feedback", 5);
+	feedback_cmd_pub = node.advertise<taticoma_msgs::FeedbackJoyCmd>("/teleop/feedback_joy_cmd", 1);
 
 	mode_num = 0;
-	modeMsg();
-
+	makeFeedbackCmd(1, mode_num);
 	ROS_WARN("Node Ready: teleop_joy");
 }
 
-void TeleopJoy::modeMsg()
+void TeleopJoy::makeFeedbackCmd(uint8_t cmd, uint8_t val)
 {
-	switch (mode_num)
-	{
-	case 0:
-		ROS_INFO("Node msg (teleop_joy): Mode switch -> Debug");
-		sendLedChannels(1, 0, 0, 0);
-		break;
-	case 1:
-		ROS_INFO("Node msg (teleop_joy): Mode switch -> Movement");
-		sendLedChannels(0, 1, 0, 0);
-		break;
-	case 2:
-		ROS_INFO("Node msg (teleop_joy): Mode switch -> 3");
-		sendLedChannels(0, 0, 1, 0);
-		break;
-	case 3:
-		ROS_INFO("Node msg (teleop_joy): Mode switch -> 4");
-		sendLedChannels(0, 0, 0, 1);
-		break;
-	}
-}
-
-void TeleopJoy::sendRumbleChannels(sensor_msgs::JoyFeedback::_intensity_type rumble_low_freq, sensor_msgs::JoyFeedback::_intensity_type rumble_high_freq)
-{
-	sensor_msgs::JoyFeedbackArray feedback_array;
-	feedback_array.array.push_back(*makeFeedbackRumbleMsg(0, rumble_low_freq));
-	feedback_array.array.push_back(*makeFeedbackRumbleMsg(1, rumble_high_freq));
-	feedback_pub.publish(feedback_array);
-}
-
-void TeleopJoy::sendLedChannels(bool ch0, bool ch1, bool ch2, bool ch3)
-{
-	sensor_msgs::JoyFeedbackArray feedback_array;
-	feedback_array.array.push_back(*makeFeedbackLedMsg(0, ch0));
-	feedback_array.array.push_back(*makeFeedbackLedMsg(1, ch1));
-	feedback_array.array.push_back(*makeFeedbackLedMsg(2, ch2));
-	feedback_array.array.push_back(*makeFeedbackLedMsg(3, ch3));
-	feedback_pub.publish(feedback_array);
-}
-
-sensor_msgs::JoyFeedbackPtr TeleopJoy::makeFeedbackLedMsg(sensor_msgs::JoyFeedback::_id_type id, sensor_msgs::JoyFeedback::_intensity_type intensity)
-{
-	sensor_msgs::JoyFeedbackPtr feedback(new sensor_msgs::JoyFeedback());
-	feedback->type = sensor_msgs::JoyFeedback::TYPE_LED;
-	feedback->id = id;
-	feedback->intensity = intensity;
-	return feedback;
-}
-
-sensor_msgs::JoyFeedbackPtr TeleopJoy::makeFeedbackRumbleMsg(sensor_msgs::JoyFeedback::_id_type id, sensor_msgs::JoyFeedback::_intensity_type intensity)
-{
-	sensor_msgs::JoyFeedbackPtr feedback(new sensor_msgs::JoyFeedback());
-	feedback->type = sensor_msgs::JoyFeedback::TYPE_RUMBLE;
-	feedback->id = id;
-	feedback->intensity = intensity;
-	return feedback;
+	taticoma_msgs::FeedbackJoyCmd feedback_joy_cmd;
+	feedback_joy_cmd.cmd = cmd;
+	feedback_joy_cmd.val = val;
+	feedback_cmd_pub.publish(feedback_joy_cmd);
 }
 
 void TeleopJoy::joyCallback(const sensor_msgs::Joy::ConstPtr &joy)
@@ -84,7 +32,7 @@ void TeleopJoy::joyCallback(const sensor_msgs::Joy::ConstPtr &joy)
 		if (mode_num < max_mode_num)
 		{
 			mode_num = mode_num + 1;
-			modeMsg();
+			makeFeedbackCmd(1, mode_num);
 			ros::Duration(1).sleep();
 		}
 	}
@@ -94,7 +42,7 @@ void TeleopJoy::joyCallback(const sensor_msgs::Joy::ConstPtr &joy)
 		if (mode_num > 0)
 		{
 			mode_num = mode_num - 1;
-			modeMsg();
+			makeFeedbackCmd(1, mode_num);
 			ros::Duration(1).sleep();
 		}
 	}
@@ -116,7 +64,7 @@ void TeleopJoy::joyCallback(const sensor_msgs::Joy::ConstPtr &joy)
 				gait_command.cmd = gait_command.STOP;
 			}
 			gait_cmd_pub.publish(gait_command);
-			ROS_INFO("Node msg (teleop_joy): Gait switch command send");
+			ROS_INFO("Node msg (teleop_joy): Gait switch");
 			ros::Duration(0.5).sleep();
 		}
 
@@ -152,10 +100,12 @@ void TeleopJoy::joyCallback(const sensor_msgs::Joy::ConstPtr &joy)
 				if (!gait_flag)
 				{
 					gait_command.cmd = gait_command.RUNRIPPLE;
+					makeFeedbackCmd(2, 0);
 				}
 				else
 				{
 					gait_command.cmd = gait_command.RUNTRIPOD;
+					makeFeedbackCmd(2, 1);
 				}
 				// Gait Fi and Velocity Signal
 				float a, b, xinv;

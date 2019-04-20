@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package>
+  <name>taticoma_feedback_joy</name>
+  <version>0.0.0</version>
+  <description>The taticoma_feedback_joy package</description>
+  <maintainer email="gabbapeople@mail.ru">gabbapeople</maintainer>
+  <license>todo</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>joy</build_depend>
+  <build_depend>ps3joy</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+
+  <run_depend>joy</run_depend>
+  <run_depend>ps3joy</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>std_msgs</run_depend>
+
+  <export>
+  </export>
+</package>

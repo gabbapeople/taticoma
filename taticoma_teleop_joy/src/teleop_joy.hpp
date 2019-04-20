@@ -9,7 +9,7 @@
 #include "taticoma_msgs/BodyCommand.h"
 #include "taticoma_msgs/GaitCommand.h"
 
-#include <sensor_msgs/JoyFeedbackArray.h>
+#include "taticoma_msgs/FeedbackJoyCmd.h"
 
 // note on plain values:
 // buttons are either 0 or 1
@@ -61,7 +61,6 @@ class TeleopJoy
 	TeleopJoy();
 
   private:
-	
 	ros::NodeHandle node;
 
 	taticoma_msgs::BodyState body_state;
@@ -69,30 +68,25 @@ class TeleopJoy
 	taticoma_msgs::GaitCommand gait_command;
 
 	ros::Subscriber joy_sub;
-	
+
 	ros::Publisher move_body_pub;
 	ros::Publisher body_cmd_pub;
 	ros::Publisher gait_cmd_pub;
-
-	ros::Publisher feedback_pub;
+	ros::Publisher feedback_cmd_pub;
 
 	double z;
 
 	bool gait_flag;
-	
+
 	uint8_t mode_num;
 	const static uint8_t max_mode_num = 4;
 
+	void makeFeedbackCmd(uint8_t cmd, uint8_t val);
+
 	void joyCallback(const sensor_msgs::Joy::ConstPtr &joy);
-	void modeMsg();
 
-	sensor_msgs::JoyFeedbackPtr makeFeedbackLedMsg(sensor_msgs::JoyFeedback::_id_type id, sensor_msgs::JoyFeedback::_intensity_type intensity);
-	sensor_msgs::JoyFeedbackPtr makeFeedbackRumbleMsg(sensor_msgs::JoyFeedback::_id_type id, sensor_msgs::JoyFeedback::_intensity_type intensity);
-	void sendLedChannels(bool ch0, bool ch1, bool ch2, bool ch3);
-	void sendRumbleChannels(sensor_msgs::JoyFeedback::_intensity_type rumble_low_freq, sensor_msgs::JoyFeedback::_intensity_type rumble_high_freq);
-
-	const static int mode_select_forward = PS3_BUTTON_CROSS_RIGHT;
-	const static int mode_select_backward = PS3_BUTTON_CROSS_LEFT;
+	const static int mode_select_forward = PS3_AXIS_BUTTON_CROSS_UP;
+	const static int mode_select_backward = PS3_AXIS_BUTTON_CROSS_DOWN;
 
 	const static int axis_body_roll = PS3_AXIS_STICK_LEFT_LEFTWARDS;
 	const static int axis_body_pitch = PS3_AXIS_STICK_LEFT_UPWARDS;

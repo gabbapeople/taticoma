@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(taticoma_teleop_joy)
+project(taticoma_feedback_joy)
 
 find_package(catkin REQUIRED COMPONENTS
   ps3joy
@@ -14,8 +14,8 @@ catkin_package(
 
 include_directories( include ${catkin_INCLUDE_DIRS})
 
-add_executable(teleop_joy src/teleop_joy.cpp)
+add_executable(feedback_joy src/feedback_joy.cpp)
 
-target_link_libraries(teleop_joy ${catkin_LIBRARIES})
+target_link_libraries(feedback_joy ${catkin_LIBRARIES})
 
 

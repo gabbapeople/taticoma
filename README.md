@@ -1,14 +1,23 @@
 # taticoma
 The taticoma robot source code.
 
+![ttcm](ttcm.png)
+
 # Not to forget
 
-## Joy launch
+## PS3Joy launch
 
 PS3 joystick + 6 channels feedback
 ```bash
 sudo bash 
 rosrun ps3joy ps3joy_node.py --inactivity-timeout=1000000
+```
+xorg disable act like a mouse
+```
+#!/bin/bash
+props=`xinput list-props 15`
+# echo "$props"
+xinput set-prop 15 142 0
 ```
 
 ## Launch

@@ -12,12 +12,12 @@ add_message_files(
    LegsJointsState.msg
    LegIKRequest.msg
    LegPositionState.msg
-
    BodyState.msg
    BodyCommand.msg
    GaitCommand.msg
- )
 
+   FeedbackJoyCmd.msg
+ )
 
  add_service_files(
    FILES
