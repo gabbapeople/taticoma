@@ -6,23 +6,25 @@
 #include <sensor_msgs/JoyFeedbackArray.h>
 
 #include "taticoma_msgs/FeedbackJoyCmd.h"
+
 //#include <diagnostic_msgs/DiagnosticStatus.h>
 
 class feedbackJoy
 {
-public:
+  public:
 	feedbackJoy();
 
-private:
+  private:
 	ros::NodeHandle node;
 
 	ros::Subscriber feedback_cmd_sub;
-	ros::Subscriber diagnostic_sub;
+	//ros::Subscriber diagnostic_sub;
+
 	ros::Publisher feedback_pub;
 
 	void feedBackJoyParseCmd(const taticoma_msgs::FeedbackJoyCmdConstPtr &cmd);
 
-//	void diagnosticParse(const diagnostic_msgs::DiagnosticStatus::ConstPtr& DiagnosticStatusmsg);
+	//void diagnosticParse(const diagnostic_msgs::DiagnosticStatus::ConstPtr& DiagnosticStatusmsg);
 
 	void modeChangeMsg(uint8_t mode);
 	void gaitChangeMsg(uint8_t gait);

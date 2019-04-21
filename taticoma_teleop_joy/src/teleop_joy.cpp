@@ -12,8 +12,14 @@ TeleopJoy::TeleopJoy()
 
 	feedback_cmd_pub = node.advertise<taticoma_msgs::FeedbackJoyCmd>("/teleop/feedback_joy_cmd", 1);
 
+	// default settings
+
+	//default mode
 	mode_num = 0;
-	makeFeedbackCmd(1, mode_num);
+
+	//default gait
+	gait_flag = false;
+
 	ROS_WARN("Node Ready: teleop_joy");
 }
 
@@ -33,7 +39,8 @@ void TeleopJoy::joyCallback(const sensor_msgs::Joy::ConstPtr &joy)
 		{
 			mode_num = mode_num + 1;
 			makeFeedbackCmd(1, mode_num);
-			ros::Duration(1).sleep();
+			ROS_INFO("Node msg (teleop_joy): Mode switch");
+			ros::Duration(0.25).sleep();
 		}
 	}
 
@@ -43,7 +50,8 @@ void TeleopJoy::joyCallback(const sensor_msgs::Joy::ConstPtr &joy)
 		{
 			mode_num = mode_num - 1;
 			makeFeedbackCmd(1, mode_num);
-			ros::Duration(1).sleep();
+			ROS_INFO("Node msg (teleop_joy): Mode switch");
+			ros::Duration(0.25).sleep();
 		}
 	}
 
@@ -57,15 +65,19 @@ void TeleopJoy::joyCallback(const sensor_msgs::Joy::ConstPtr &joy)
 			{
 				gait_flag = true;
 				gait_command.cmd = gait_command.STOP;
+				makeFeedbackCmd(2, 1);
+				ROS_INFO("Node msg (teleop_joy): Gait switch");
+				ros::Duration(0.25).sleep();
 			}
 			else
 			{
 				gait_flag = false;
 				gait_command.cmd = gait_command.STOP;
+				makeFeedbackCmd(2, 0);
+				ROS_INFO("Node msg (teleop_joy): Gait switch");
+				ros::Duration(0.25).sleep();
 			}
 			gait_cmd_pub.publish(gait_command);
-			ROS_INFO("Node msg (teleop_joy): Gait switch");
-			ros::Duration(0.5).sleep();
 		}
 
 		// RPY Signal
@@ -100,12 +112,10 @@ void TeleopJoy::joyCallback(const sensor_msgs::Joy::ConstPtr &joy)
 				if (!gait_flag)
 				{
 					gait_command.cmd = gait_command.RUNRIPPLE;
-					makeFeedbackCmd(2, 0);
 				}
 				else
 				{
 					gait_command.cmd = gait_command.RUNTRIPOD;
-					makeFeedbackCmd(2, 1);
 				}
 				// Gait Fi and Velocity Signal
 				float a, b, xinv;

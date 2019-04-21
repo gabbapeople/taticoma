@@ -19,9 +19,9 @@
 		<param name="autorepeat_rate" value="5.0" />
 		<param name="coalesce_interval" value="0.005" />
 </node> -->
-
  <node name="taticoma_teleop_joy" pkg="taticoma_teleop_joy" type="teleop_joy" output="screen"/>
- <node name="taticoma_feedback_joy" pkg="taticoma_feedback_joy" type="feedback_joy" output="screen"/>
+  <node name="taticoma_feedback_joy" pkg="taticoma_feedback_joy" type="feedback_joy" output="screen"/>
+
  
 
 </launch>

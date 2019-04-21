@@ -7,20 +7,15 @@ feedbackJoy::feedbackJoy()
 	feedback_cmd_sub = node.subscribe<taticoma_msgs::FeedbackJoyCmd>("/teleop/feedback_joy_cmd", 1, &feedbackJoy::feedBackJoyParseCmd, this);
 	//diagnostic_sub = node.subscribe<diagnostic_msgs::DiagnosticStatus>("/diagnostics", 1, &feedbackJoy::diagnosticParse, this);
 	feedback_pub = node.advertise<sensor_msgs::JoyFeedbackArray>("/joy/set_feedback", 1);
+
+	//default settings
+
+	
+	gaitChangeMsg(0);
+	modeChangeMsg(0);
+
 	ROS_WARN("Node Ready: feedback_joy");
 }
-
-// //void feedbackJoy::diagnosticParse(const diagnostic_msgs::DiagnosticArray::status::ConstPtr &diagnostic_msg)
-
-// void feedbackJoy::diagnosticParse(const diagnostic_msgs::DiagnosticStatus::ConstPtr &diagnosticStatusMsg)
-// {
-// 	std::string name = diagnosticStatusMsg->name;
-// 	// if (name == "Battery")
-// 	// {
-// 		//std::string message = diagnostic_msg->message;
-// 		ROS_INFO_STREAM(name);
-// 	//}
-// }
 
 void feedbackJoy::feedBackJoyParseCmd(const taticoma_msgs::FeedbackJoyCmdConstPtr &cmdMsg)
 {
@@ -45,46 +40,46 @@ void feedbackJoy::modeChangeMsg(uint8_t mode)
 	{
 	case 0:
 		ROS_INFO("Node msg (feedback_joy): Msg send -> mode switch to Standstill");
-		sendLedChannels(1, 1, 1, 0);
+		sendLedChannels(1, 1, 1, 0); //0001
 		ros::Duration(timeToCall).sleep();
-		sendLedChannels(1, 1, 0, 1);
+		sendLedChannels(1, 1, 0, 1); //0010
 		ros::Duration(timeToCall).sleep();
-		sendLedChannels(0, 1, 1, 1);
+		sendLedChannels(0, 1, 0, 1); //1010
 		ros::Duration(timeToCall).sleep();
-		sendLedChannels(0, 0, 0, 1);
+		sendLedChannels(0, 0, 0, 1); //1110
 		ros::Duration(timeToCall).sleep();
 		break;
 	case 1:
 		ROS_INFO("Node msg (feedback_joy): Msg send -> mode switch to Movement");
-		sendLedChannels(1, 1, 1, 0);
+		sendLedChannels(1, 1, 1, 0); //0001
 		ros::Duration(timeToCall).sleep();
-		sendLedChannels(1, 1, 0, 1);
+		sendLedChannels(1, 1, 0, 1); //0010
 		ros::Duration(timeToCall).sleep();
-		sendLedChannels(0, 1, 1, 0);
+		sendLedChannels(0, 1, 0, 0); //1011
 		ros::Duration(timeToCall).sleep();
-		sendLedChannels(0, 0, 0, 1);
+		sendLedChannels(0, 0, 0, 1); //1110
 		ros::Duration(timeToCall).sleep();
 		break;
 	case 2:
 		ROS_INFO("Node msg (feedback_joy): Msg send -> mode switch to 3");
-		sendLedChannels(1, 1, 1, 0);
+		sendLedChannels(1, 1, 1, 0); //0001
 		ros::Duration(timeToCall).sleep();
-		sendLedChannels(1, 1, 0, 1);
+		sendLedChannels(1, 1, 0, 1); //0010
 		ros::Duration(timeToCall).sleep();
-		sendLedChannels(0, 1, 0, 1);
+		sendLedChannels(0, 0, 1, 1); //1100
 		ros::Duration(timeToCall).sleep();
-		sendLedChannels(0, 0, 0, 1);
+		sendLedChannels(0, 0, 0, 1); //1110
 		ros::Duration(timeToCall).sleep();
 		break;
 	case 3:
 		ROS_INFO("Node msg (feedback_joy): Msg send -> mode switch to 4");
-		sendLedChannels(1, 1, 1, 0);
+		sendLedChannels(1, 1, 1, 0); //0001
 		ros::Duration(timeToCall).sleep();
-		sendLedChannels(1, 1, 0, 1);
+		sendLedChannels(1, 1, 0, 1); //0010
 		ros::Duration(timeToCall).sleep();
-		sendLedChannels(0, 1, 0, 0);
+		sendLedChannels(0, 0, 1, 0); //1101
 		ros::Duration(timeToCall).sleep();
-		sendLedChannels(0, 0, 0, 1);
+		sendLedChannels(0, 0, 0, 1); //1110
 		ros::Duration(timeToCall).sleep();
 		break;
 	}
@@ -97,25 +92,25 @@ void feedbackJoy::gaitChangeMsg(uint8_t gait)
 	switch (gait)
 	{
 	case 0:
-		ROS_INFO("Node msg (feedback_joy): Msg send -> gait switch to Standstill");
-		sendLedChannels(1, 1, 1, 0);
+		ROS_INFO("Node msg (feedback_joy): Msg send -> gait switch to Ripple");
+		sendLedChannels(1, 1, 1, 0); //0001
 		ros::Duration(timeToCall).sleep();
-		sendLedChannels(1, 1, 0, 0);
+		sendLedChannels(1, 1, 0, 0); //0011
 		ros::Duration(timeToCall).sleep();
-		sendLedChannels(0, 1, 1, 1);
+		sendLedChannels(0, 1, 0, 1); //1010
 		ros::Duration(timeToCall).sleep();
-		sendLedChannels(0, 0, 0, 1);
+		sendLedChannels(0, 0, 0, 1); //1110
 		ros::Duration(timeToCall).sleep();
 		break;
 	case 1:
-		ROS_INFO("Node msg (feedback_joy): Msg send -> gait switch to Movement");
-		sendLedChannels(1, 1, 1, 0);
+		ROS_INFO("Node msg (feedback_joy): Msg send -> gait switch to Tripod");
+		sendLedChannels(1, 1, 1, 0); //0001
 		ros::Duration(timeToCall).sleep();
-		sendLedChannels(1, 1, 0, 0);
+		sendLedChannels(1, 1, 0, 0); //0011
 		ros::Duration(timeToCall).sleep();
-		sendLedChannels(0, 1, 1, 0);
+		sendLedChannels(0, 1, 0, 0); //1011
 		ros::Duration(timeToCall).sleep();
-		sendLedChannels(0, 0, 0, 1);
+		sendLedChannels(0, 0, 0, 1); //1110
 		ros::Duration(timeToCall).sleep();
 		break;
 	}

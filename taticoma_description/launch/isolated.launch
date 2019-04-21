@@ -18,7 +18,7 @@
 
   <rosparam param="source_list"> [taticoma_joint_publisher] </rosparam>
 
-  <include file="$(find taticoma_teleop_joy)/launch/joy.launch" />
+
 
   <node name="taticoma_leg_kinematics" pkg="taticoma_leg_kinematics" type="leg_ik_service" output="screen"/>
   <node name="taticoma_body_kinematics" pkg="taticoma_body_kinematics" type="body_kinematics" output="screen"/>
@@ -33,4 +33,6 @@
 
   <node name="taticoma_dynamixel" pkg="taticoma_dynamixel" type="dynamixel_controller_sub" output="screen"/>
 
+  <include file="$(find taticoma_teleop_joy)/launch/joy.launch" />
+  
 </launch>
