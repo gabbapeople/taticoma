@@ -70,6 +70,10 @@ dynamixel_setup/launch/controller_spawner.launch
 ```bash
 printenv | grep ROS
 source /opt/ros/<distro>/setup.bash
+
+echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+
 ```
 
 Создание рабочего пространства:
