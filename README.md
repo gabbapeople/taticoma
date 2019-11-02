@@ -131,8 +131,11 @@ $SHELL
 ```
 ## Control ROS distantly
 
-nano ~/.bashrc переменные окружения, `roscore` только на мастере.
-
+переменные окружения, `roscore` только на мастере.
+```
+nano ~/.bashrc 
+source ~/.bashrc
+```
 work:
 ```bash
 export ROS_MASTER_URI=http://192.168.88.250:11311
