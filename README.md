@@ -58,6 +58,10 @@ rfkill unblock all
 ```
 ## Dynamixel
 
+```bash
+sudo chmod 777 /dev/ttyUSB0
+```
+
 Controllers:
 ```bash
 dynamixel_setup/launch/controller_manager.launch
