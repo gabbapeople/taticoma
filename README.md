@@ -71,22 +71,30 @@ dynamixel_setup/launch/controller_spawner.launch
 ## Workspace
 
 Переменные окружения ROS:
+
 ```bash
 printenv | grep ROS
 source /opt/ros/<distro>/setup.bash
 
 echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 source ~/.bashrc
+```
+roscore kill:
 
+```bash
+killall -9 roscore
+killall -9 rosmaster
 ```
 
 Создание рабочего пространства:
+
 ```bash
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/
 catkin_make
 ```
 New package:
+
 ```bash
 cd ~/catkin_ws
 catkin_create_pkg my_new_package
@@ -140,12 +148,12 @@ $SHELL
 ## Control ROS distantly
 
 переменные окружения, `roscore` только на мастере.
-```
+```bash
 nano ~/.bashrc 
 source ~/.bashrc
 ```
 
-```
+```bash
 export ROS_HOSTNAME=localhost
 export ROS_MASTER_URI=http://localhost:11311
 ```
