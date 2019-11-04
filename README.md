@@ -99,6 +99,7 @@ New package:
 cd ~/catkin_ws
 catkin_create_pkg my_new_package
 cd src/my_new_package
+catkin_create_pkg beginner_tutorials std_msgs rospy roscpp
 ```
 
 Проверка:
